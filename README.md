@@ -2,22 +2,22 @@
 
 ## Reference
 
-see [sarxos' webcam-capture](http://en.wikipedia.org/wiki/Markdown)
+See [sarxos' webcam-capture](https://github.com/sarxos/webcam-capture)
 
-> The concepts in this library was used to create this motion activated webcam scanner service
+> The concepts in that library was used to create this motion activated webcam scanner service
 
 ## Usage
 
-build and run the jar:
+Build and run the jar:
 
     $ mvn package
     $ java -jar target\webcam-capture-service-0.0.1-SNAPSHOT.jar
     
-open [stream] (http://localhost:8321) in browser
+Open [the local stream] (http://localhost:8321) in your browser
 
 ## Integration
 
-the server accepts connections on port 8321, to show the stream in a html page use the following code:
+The server accepts connections on port 8321 by default, to show the stream in a html page use the following code:
 
 	<canvas id="webcam-capture" width="1920" height="1080"></canvas>
 	
@@ -41,3 +41,17 @@ the server accepts connections on port 8321, to show the stream in a html page u
 
 		setTimeout(capture, delay);
 	</script>
+
+## Configuration
+
+The default settings are:
+
+	webcam.name=foo
+	webcam.width=1920
+	webcam.height=1080
+	webcam.fps=25
+	webcam.socketport=8321
+	
+The settings can be changed by adding -Dwebcam.<property>=<newvalue> to the java command, for example to use a custom webcam name try:
+
+	java -Dwebcam.name="Your webcam's name" -jar target\webcam-capture-service-0.0.1-SNAPSHOT.jar
