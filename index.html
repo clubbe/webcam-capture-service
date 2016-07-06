@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>webcam capture service</title>
+</head>
+<body>
+	
+	<canvas id="webcam-capture" width="1920" height="1080"></canvas>
+	
+	<script>
+	
+		var canvas = document.getElementById('webcam-capture');
+		var context = canvas.getContext('2d');
+		var imageObj = new Image();
+
+		imageObj.onload = function() {
+			context.drawImage(imageObj, 0, 0);
+		};
+		
+		var delay = 1000 / 25; // 25 fps
+
+		var capture = function() {
+
+			imageObj.src = 'http://localhost:8321';
+			setTimeout(capture, delay);
+		}
+
+		setTimeout(capture, delay);
+	</script>
+</body>
+</html>
